@@ -284,7 +284,7 @@ def search_users(
     with the other tools.
 
     Matching is fuzzy, so you do not need the exact spelling: partial words
-    ("Xuli" finds "Xueli"), words in any order ("kevin tian"), and small
+    ("Jnthn" finds "Jonathan"), words in any order ("doe jane"), and small
     misspellings including transposed letters ("Setmsa" finds "Setsma") all
     match. If a first attempt returns nothing, try fewer letters rather than
     guessing the spelling.

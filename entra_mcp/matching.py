@@ -9,13 +9,13 @@ Three tiers, best score wins:
 
 1. **Substring** - the token appears in the field. Prefix beats mid-word.
 2. **Subsequence** - the token's characters appear *in order*, gaps allowed.
-   This is what `fzf` does, and it is what makes "Xuli" find "Xueli".
+   This is what `fzf` does, and it is what makes "Jnthn" find "Jonathan".
 3. **Typo tolerance** - character-multiset similarity, which catches
    transpositions ("Setmsa" -> "Setsma") and single wrong letters
-   ("Zueli" -> "Xueli"). Cheap: no dynamic programming, and transpositions
+   ("Jonathon" -> "Jonathan"). Cheap: no dynamic programming, and transpositions
    score 1.0 because the letters are identical, just reordered.
 
-Multi-token queries AND together, so "kevin tian" matches "Tian, Xueli (Kevin)"
+Multi-token queries AND together, so "jane doe" matches "Doe, Jane (JD)"
 even though those words are far apart in the string.
 
 Everything runs over the in-memory directory cache, so there is no extra Graph
@@ -61,14 +61,14 @@ def subsequence_score(token: str, text: str) -> float | None:
     Weighted by three things, because "characters appear in order" is far too
     generous on its own:
 
-    - **density** - how tightly the matches are packed. "xuli" inside
-      "xu e li" is a strong match; the same letters scattered across two
+    - **density** - how tightly the matches are packed. "jnthn" inside
+      "jonathan" is a strong match; the same letters scattered across two
       different words are not.
     - **contiguity** - adjacent runs of matched characters.
     - **word starts** - matches that begin a word.
 
     Without the density term a scattered match ties with a tight one, which is
-    exactly how "Xuli" used to lose to "BingXuan".
+    exactly how "Jnthn" used to lose to "John Thornton".
     """
     if token[0] not in text:
         return None
