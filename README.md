@@ -12,12 +12,16 @@ client secret, no certificate.
 az login
 ```
 
-## Run
+## Install and run
 
 ```sh
-uv tool install --editable ~/.dotfiles-agents/mcp/entra-mcp --with fastmcp
-uv run --directory ~/.dotfiles-agents/mcp/entra-mcp --extra mcp entra-mcp
+git clone https://github.com/msetsma/entra-mcp
+uv tool install --editable ./entra-mcp --with fastmcp   # provides `entra` and `entra-mcp`
+uv run --directory ./entra-mcp --extra mcp entra-mcp    # or run the MCP server from the clone
 ```
+
+Consumed by `~/.dotfiles-agents` through its catalog (`catalog/mcp/entra-mcp.toml`,
+`[package] manager = "git"`, cloned to `~/.dotfiles-agents/vendor/entra-mcp`).
 
 ## MCP tools
 
