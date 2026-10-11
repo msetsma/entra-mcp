@@ -1,5 +1,7 @@
 # entra-mcp
 
+[![CI](https://github.com/msetsma/entra-mcp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/msetsma/entra-mcp/actions/workflows/ci.yml)
+
 Read-only Entra ID org-structure and access analysis, exposed as an `entra` CLI
 and an `entra-mcp` MCP server. Both share one core package (`entra_tool`).
 
