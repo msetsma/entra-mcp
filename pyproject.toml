@@ -7,12 +7,11 @@ requires-python = ">=3.14"
 license = { text = "Apache-2.0" }
 
 # The CLI is pure standard library: no runtime dependencies. Auth is delegated
-# to the `az` CLI, which is already on the machine.
+# to the `az` CLI, which must be installed and signed in.
 dependencies = []
 
 [project.optional-dependencies]
 mcp = ["fastmcp>=0.4"]
-dev = ["pytest>=8.0"]
 
 [project.scripts]
 entra = "entra_tool.app:cli_entry"
@@ -24,7 +23,3 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["entra_tool", "entra_mcp"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-q"

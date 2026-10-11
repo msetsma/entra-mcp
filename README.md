@@ -3,6 +3,10 @@
 Read-only Entra ID org-structure and access analysis, exposed as an `entra` CLI
 and an `entra-mcp` MCP server. Both share one core package (`entra_tool`).
 
+## Requirements
+
+Python 3.14+, [uv](https://docs.astral.sh/uv/), and the [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (`az`).
+
 ## Auth
 
 Uses your existing `az login` session via `az rest`: no app registration, no
@@ -20,8 +24,11 @@ uv tool install --editable ./entra-mcp --with fastmcp   # provides `entra` and `
 uv run --directory ./entra-mcp --extra mcp entra-mcp    # or run the MCP server from the clone
 ```
 
-Consumed by `~/.dotfiles-agents` through its catalog (`catalog/mcp/entra-mcp.toml`,
-`[package] manager = "git"`, cloned to `~/.dotfiles-agents/vendor/entra-mcp`).
+Register with an MCP client, for example Claude Code:
+
+```sh
+claude mcp add --scope user entra-mcp -- entra-mcp
+```
 
 ## MCP tools
 
